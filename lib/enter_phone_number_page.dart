@@ -143,7 +143,8 @@ class PhoneNumberPage extends StatelessWidget {
                   backgroundColor: Colors.black,
                   elevation: 3,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5.0)),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
                   minimumSize: const Size(360, 60),
                 ),
                 child: const Text(
@@ -158,8 +159,3 @@ class PhoneNumberPage extends StatelessWidget {
     );
   }
 }
-
-// is file me aur OTPPage mein Provider ka istemal kia hai data ko manage karne ke liye
-// OtpProvider class ke functions ka use karke state ko update kia hai, 
-// PhoneNumberPage widget mein, Provider.of<OtpProvider>(context) se OtpProvider ka instance authProvider milta hai. 
-//Is instance ka use onChanged event mein phone number ko set karne mein aur onPressed event mein OTP page par jaane mein hota hai.

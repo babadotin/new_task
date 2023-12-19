@@ -223,5 +223,3 @@ class _OtpState extends State<Otp> {
     );
   }
 }
-// OTPPage widget mein bhi Provider.of<OtpProvider>(context) ka use hua hai, jisse authProvider milta hai 
-//jisse authProvider ka use karke OTP ko dubara paa kar sakte hain aur aage kaam kar sakte hain.

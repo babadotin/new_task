@@ -21,7 +21,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-// ChangeNotifierProvider widget OtpProvider class ko provide karta hai, 
-//jisse ye data ko manage karne aur update karne mein help karega.
