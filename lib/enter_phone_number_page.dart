@@ -1,17 +1,15 @@
-// PhoneNumberPage.dart
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:new_task/enter_otp_page.dart';
-import 'package:new_task/otp_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:new_task/otp_cubit.dart';
 
 class PhoneNumberPage extends StatelessWidget {
   const PhoneNumberPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<OtpProvider>(context);
+    final otpCubit = BlocProvider.of<OtpCubit>(context);
 
     return Scaffold(
       backgroundColor: Colors.yellow,
@@ -23,7 +21,7 @@ class PhoneNumberPage extends StatelessWidget {
               icon: const Icon(
                 Icons.menu,
                 color: Colors.yellow,
-                size: 44, // Changing Drawer Icon Size
+                size: 44,
               ),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
@@ -42,6 +40,7 @@ class PhoneNumberPage extends StatelessWidget {
         ),
       ),
       drawer: Drawer(
+        backgroundColor: Colors.yellow,
         child: ListView(
           children: [
             const DrawerHeader(
@@ -74,11 +73,23 @@ class PhoneNumberPage extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: const Text('Item 1'),
+              title: const Text(
+                'Item 1',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
               onTap: () {},
             ),
             ListTile(
-              title: const Text('Item 2'),
+              title: const Text(
+                'Item 2',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
               onTap: () {},
             ),
           ],
@@ -101,7 +112,7 @@ class PhoneNumberPage extends StatelessWidget {
                 height: 30,
               ),
               const Text(
-                'We will send you an One Time Password on this mobile number',
+                'We will send you a One Time Password on this mobile number',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 15,
@@ -122,20 +133,19 @@ class PhoneNumberPage extends StatelessWidget {
                   ),
                   initialCountryCode: 'IN',
                   onChanged: (phone) {
-                    authProvider.setPhoneNumber(phone.number);
+                    otpCubit.setPhoneNumber(phone.number);
                   },
                 ),
               ),
               const SizedBox(height: 16),
               ElevatedButton(
-                onPressed: authProvider.phoneNumber.isEmpty
+                onPressed: otpCubit.state.phoneNumber.isEmpty
                     ? null
                     : () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                OTPPage(phoneNumber: authProvider.phoneNumber),
+                            builder: (context) => const OTPPage(),
                           ),
                         );
                       },

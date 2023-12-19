@@ -1,9 +1,8 @@
-// OTP_page.dart
-
+// otp_provider.dart
 import 'package:flutter/material.dart';
 
 class OtpProvider with ChangeNotifier {
-  String countryCode = '+1';
+  String countryCode = '+91';
   String phoneNumber = '';
   String otp = '';
 
@@ -20,5 +19,9 @@ class OtpProvider with ChangeNotifier {
   void setOTP(String code) {
     otp = code;
     notifyListeners();
+  }
+
+  String getPhoneNumber() {
+    return '$countryCode $phoneNumber';
   }
 }

@@ -1,12 +1,10 @@
 // enter_otp_page.dart
-
 import 'package:flutter/material.dart';
+import 'package:new_task/otp_provider.dart';
+import 'package:provider/provider.dart';
 
 class OTPPage extends StatelessWidget {
-  const OTPPage({
-    Key? key,
-    required String phoneNumber,
-  }) : super(key: key);
+  const OTPPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +24,8 @@ class Otp extends StatefulWidget {
 class _OtpState extends State<Otp> {
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<OtpProvider>(context);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
@@ -65,7 +65,7 @@ class _OtpState extends State<Otp> {
                     height: 28,
                   ),
                   Text(
-                    "Enter your OTP code number",
+                    "Enter your OTP code number for ${authProvider.getPhoneNumber()}",
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.yellow.shade100,
@@ -146,26 +146,34 @@ class _OtpState extends State<Otp> {
               const SizedBox(
                 height: 18,
               ),
-              Text(
-                "Didn't you receive any code?",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.yellow.shade200,
+              TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(),
+                child: Text(
+                  "Didn't you receive any code?",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.yellow.shade200,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 18,
               ),
-              const Text(
-                "Resend New Code",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.yellow,
+              TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(),
+                child: const Text(
+                  "Resend New Code",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.yellow,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ],
           ),
@@ -194,6 +202,7 @@ class _OtpState extends State<Otp> {
         showCursor: false,
         readOnly: false,
         style: const TextStyle(
+          color: Color.fromARGB(255, 235, 228, 168),
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
@@ -201,7 +210,6 @@ class _OtpState extends State<Otp> {
         maxLength: 1,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
-          // Added contentPadding to center the text vertically
           contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
           counter: const Offstage(),
           enabledBorder: OutlineInputBorder(
