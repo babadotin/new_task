@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:new_task/enter_otp_page.dart';
 import 'package:new_task/otp_cubit.dart';
+import 'package:new_task/otp_page.dart';
 
 class PhoneNumberPage extends StatelessWidget {
   const PhoneNumberPage({Key? key}) : super(key: key);
@@ -63,9 +63,10 @@ class PhoneNumberPage extends StatelessWidget {
                       Text(
                         'Drawer',
                         style: TextStyle(
-                            color: Colors.yellow,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.yellow,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   ),
@@ -76,9 +77,10 @@ class PhoneNumberPage extends StatelessWidget {
               title: const Text(
                 'Item 1',
                 style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               onTap: () {},
             ),
@@ -86,9 +88,10 @@ class PhoneNumberPage extends StatelessWidget {
               title: const Text(
                 'Item 2',
                 style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               onTap: () {},
             ),
@@ -97,7 +100,9 @@ class PhoneNumberPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(
+            16.0,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -123,7 +128,10 @@ class PhoneNumberPage extends StatelessWidget {
                 height: 10,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 10),
+                padding: const EdgeInsets.only(
+                  left: 10.0,
+                  right: 10,
+                ),
                 child: IntlPhoneField(
                   decoration: const InputDecoration(
                     labelText: 'Phone Number',
@@ -153,13 +161,21 @@ class PhoneNumberPage extends StatelessWidget {
                   backgroundColor: Colors.black,
                   elevation: 3,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
+                    borderRadius: BorderRadius.circular(
+                      5.0,
+                    ),
                   ),
-                  minimumSize: const Size(360, 60),
+                  minimumSize: const Size(
+                    360,
+                    60,
+                  ),
                 ),
                 child: const Text(
                   'Get OTP',
-                  style: TextStyle(fontSize: 25, color: Colors.yellow),
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.yellow,
+                  ),
                 ),
               ),
             ],
