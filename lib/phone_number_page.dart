@@ -1,3 +1,5 @@
+// PhoneNumberPage.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -100,9 +102,7 @@ class PhoneNumberPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(
-            16.0,
-          ),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -147,16 +147,16 @@ class PhoneNumberPage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               ElevatedButton(
-                onPressed: otpCubit.state.phoneNumber.isEmpty
-                    ? null
-                    : () {
+                onPressed: otpCubit.state.phoneNumber.isNotEmpty
+                    ? () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const OTPPage(),
                           ),
                         );
-                      },
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   elevation: 3,

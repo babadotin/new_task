@@ -1,15 +1,18 @@
 // enter_otp_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:new_task/otp_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:new_task/otp_cubit.dart';
 
 class OTPPage extends StatelessWidget {
   const OTPPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Otp();
+    return BlocProvider(
+      create: (context) => OtpCubit(),
+      child: const Otp(),
+    );
   }
 }
 
@@ -25,7 +28,7 @@ class Otp extends StatefulWidget {
 class _OtpState extends State<Otp> {
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<OtpProvider>(context);
+    final otpCubit = BlocProvider.of<OtpCubit>(context);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -49,16 +52,18 @@ class _OtpState extends State<Otp> {
               const Text(
                 'CO\nDE',
                 style: TextStyle(
-                    fontSize: 100,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.yellow),
+                  fontSize: 100,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.yellow,
+                ),
               ),
               const Text(
                 'Verification',
                 style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.yellow),
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.yellow,
+                ),
               ),
               Column(
                 children: [
@@ -66,7 +71,7 @@ class _OtpState extends State<Otp> {
                     height: 28,
                   ),
                   Text(
-                    "Enter your OTP code number for ${authProvider.getPhoneNumber()}",
+                    "Enter your OTP code number for ${otpCubit.getPhoneNumber()}",
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.yellow.shade100,
@@ -135,9 +140,10 @@ class _OtpState extends State<Otp> {
                         child: Text(
                           'Verify',
                           style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),

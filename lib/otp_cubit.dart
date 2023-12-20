@@ -1,4 +1,4 @@
-//otp_cubit.dart
+// otp_cubit.dart
 
 import 'package:bloc/bloc.dart';
 
@@ -15,6 +15,10 @@ class OtpCubit extends Cubit<OtpState> {
 
   void setOTP(String code) {
     emit(state.copyWith(otp: code));
+  }
+
+  String getPhoneNumber() {
+    return '${state.countryCode} ${state.phoneNumber}';
   }
 }
 
